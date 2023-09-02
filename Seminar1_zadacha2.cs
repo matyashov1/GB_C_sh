@@ -8,9 +8,9 @@ int b = int.Parse(strNum);
 
 if(a>b)
 {
-Console.WriteLine($"Max:" + a + ",Min:" + b);
+Console.WriteLine("Max:" + a + ",Min:" + b);
 }
 else
 {
-Console.WriteLine($"Max: {b}, Min: {a}");
+Console.WriteLine("Max:" + b + ",Min:" + a);
 }
