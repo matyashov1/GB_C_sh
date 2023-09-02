@@ -14,4 +14,3 @@ else
 {
 Console.WriteLine($"Max: {b}, Min: {a}");
 }
-Console.ReadLine();
