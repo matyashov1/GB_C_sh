@@ -1,0 +1,46 @@
+
+
+int Input (string messange)
+{
+    System.Console.Write(messange);
+    string read = System.Console.ReadLine();
+    int result = Convert.ToInt32(read);
+    return result;
+}
+
+int [] InputArray(int length)
+{
+    int [] array = new int [length];
+    for (int i = 0; i < array.Length; i++)
+    {
+        array[i] = Input ($"Введите {i + 1} -й элемент");
+    }
+    return array;
+}
+
+void PrintArray (int [] array)
+{
+    for (int i = 0; i < array.Length; i++)
+    {
+        Console.WriteLine($"a [{i}] = {array[i]}");
+    }
+}
+
+int CountPositive (int [] array)
+{
+    int count = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if(array[i] > 0)
+        {
+            count ++;
+        }
+    }
+    return count;
+}
+
+int length = Input("Введите кол-во элементов больше нуля ");
+int [] array;
+array = InputArray(length);
+PrintArray (array);
+Console.WriteLine($"Количество элементов больше нуля " + CountPositive(array));
