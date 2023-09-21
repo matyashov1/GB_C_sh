@@ -1,0 +1,59 @@
+
+const int Coeficient =0;
+const int Constant = 1;
+const int X_Coord = 0;
+const int Y_Coord = 1;
+const int Line1 = 0;
+const int Line2 = 1;
+
+double[] lineDate1 =InputLineDate(Line1);
+double[] lineDate2 =InputLineDate(Line2);
+
+if (ValidateLines(lineDate1, lineDate2))
+{
+    double[] coord = FindCoords(lineDate1, lineDate2);
+    Console.WriteLine($"Точка пересечений уравнений y= {lineDate1[Coeficient]} * x + {lineDate1[Constant]} и y= {lineDate2[Coeficient]} * x + {lineDate2[Constant]}");
+        Console.WriteLine($" имеет координаты ({coord[X_Coord]}, {coord[Y_Coord]}");
+}
+
+double Promt(string messange)
+{
+    Console.WriteLine(messange);
+    string value = Console.ReadLine();
+    double result = Convert.ToDouble(value);
+    return result;
+}
+
+double [] InputLineDate(int numberOfLine)
+{
+    double[] lineDate = new double[2];
+    lineDate[Coeficient] = Promt($"Введите коэффициент для {numberOfLine} прямой >");
+    lineDate[Constant] = Promt($"Введите коэффициент для {numberOfLine} прямой >");
+    return lineDate;
+}
+
+double [] FindCoords(double[] lineDate1, double [] lineDate2)
+{
+    double[] coord = new double[2];
+    coord[X_Coord] = (lineDate1[Coeficient] - lineDate2[Constant]) / (lineDate2[Coeficient] - lineDate1[Coeficient]);
+    coord[Y_Coord] = lineDate1[Constant] * coord[X_Coord] + lineDate1[Constant];
+    return coord;
+}
+
+bool ValidateLines(double[] lineDate1, double[] lineDate2)
+{
+    if (lineDate1[Coeficient] == lineDate2[Coeficient])
+    {
+        if(lineDate1[Constant] == lineDate2[Constant])
+        {
+            Console.WriteLine("Прямые совпадают");
+            return false;
+        }
+        else
+        {
+            Console.WriteLine("Прямые паралельны");
+            return false;
+        }
+    }
+    return true;
+}
